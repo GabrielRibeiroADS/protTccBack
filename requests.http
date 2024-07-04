@@ -1,0 +1,26 @@
+GET http://localhost:3333/users
+
+###
+
+POST http://localhost:3333/users
+Content-type: application/json
+
+{
+    "name": "teste4",
+    "admin": "true",
+    "passwd": "321123"
+}
+
+###
+
+PUT http://localhost:3333/users/a5ea69c8-bcd6-42f6-a060-6f902e7565b7
+Content-type: application/json
+
+{
+    "name": "Fulano4",
+    "admin": "true",
+    "passwd": "321123"
+}
+
+###
+DELETE http://localhost:3333/users/d34d082f-95b5-4d45-8ee3-7c8c89b94ac2
