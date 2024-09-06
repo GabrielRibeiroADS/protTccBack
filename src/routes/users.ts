@@ -40,16 +40,23 @@ export async function usersRoutes(app: FastifyInstance){
 
         const { name, admin, passwd } = bodySchema.parse(request.body)
 
-        const user = await prisma.user.create({
-            data: {
-                name,
-                admin,
-                passwd,
-            }
-        })
+        if (!name || !admin || !passwd) {
+            return response.status(400).send('Invalid username or password');
+        }else {
+
+            const user = await prisma.user.create({
+                data: {
+                    name,
+                    admin,
+                    passwd,
+                }
+            })
+
+            return response.status(200).send(user)
+        }
 
 
-        return response.status(200).send(user)
+
     })
 
     app.put('/users/:id', async (request, response) => {
